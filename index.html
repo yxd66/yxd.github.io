@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	div{
+		width:200px;
+		height:200px;
+		background-color:#f30;
+		color:#fff;
+		font-size:2em;
+		text-align:center;
+		/*line-height:200px;*/
+	}
+</style>
+<body>
+	<div>弹</div>
+	<script>
+		var num1 = 1;
+		var num2 = 1;
+		var div = document.getElementsByTagName('div')[0];
+		div.style.lineHeight = div.offsetHeight + 'px';
+		div.style.position = 'absolute';
+		div.style.left = "0px";
+		div.style.top = "0px";
+		setInterval(function(){
+			div.style.left = parseInt(div.style.left) + num1 + 'px';
+			div.style.top = parseInt(div.style.top) + num2 + 'px';
+			if((parseInt(div.style.top) == 0 && parseInt(div.style.left) == 0)|| 
+				(parseInt(div.style.top) == innerHeight - div.offsetHeight && parseInt(div.style.left) == innerWidth - div.offsetHeight)){
+				num1 = -num1;
+				num2 = -num2;
+			} else if(parseInt(div.style.top) == 0 || parseInt(div.style.top) == innerHeight - div.offsetHeight){
+				num2 = -num2;
+			} else if(parseInt(div.style.left) == 0 || parseInt(div.style.left) == innerWidth -div.offsetWidth){
+				num1 = -num1;
+			}
+		},5)
+	</script>
+</body>
+</html>
